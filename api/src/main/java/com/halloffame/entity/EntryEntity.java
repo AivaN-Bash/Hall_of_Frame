@@ -31,7 +31,7 @@ public class EntryEntity {
     @Column(name = "release_year")
     private Integer releaseYear;
 
-    @Column(name = "poster_url")
+    @Column(name = "poster_url", columnDefinition = "TEXT")
     private String posterUrl;
 
     @Column(name = "accent_color", length = 7)
@@ -47,13 +47,13 @@ public class EntryEntity {
     @Column(nullable = false, length = 1)
     private Tier tier = Tier.A;
 
-    @Column(name = "why_hooked", nullable = false)
+    @Column(name = "why_hooked", nullable = false, columnDefinition = "TEXT")
     private String whyHooked;
 
-    @Column(name = "favorite_moment")
+    @Column(name = "favorite_moment", columnDefinition = "TEXT")
     private String favoriteMoment;
 
-    @Column(name = "favorite_quote_or_char")
+    @Column(name = "favorite_quote_or_char", columnDefinition = "TEXT")
     private String favoriteQuoteOrChar;
 
     @Column(nullable = false)

@@ -19,19 +19,19 @@ public class SiteSettingsEntity {
     @Column(name = "hero_name", nullable = false, length = 80)
     private String heroName;
 
-    @Column(name = "hero_bio", nullable = false)
+    @Column(name = "hero_bio", nullable = false, columnDefinition = "TEXT")
     private String heroBio;
 
-    @Column(name = "portrait_url")
+    @Column(name = "portrait_url", columnDefinition = "TEXT")
     private String portraitUrl;
 
-    @Column(name = "about_bio", nullable = false)
+    @Column(name = "about_bio", nullable = false, columnDefinition = "TEXT")
     private String aboutBio;
 
-    @Column(name = "about_purpose", nullable = false)
+    @Column(name = "about_purpose", nullable = false, columnDefinition = "TEXT")
     private String aboutPurpose;
 
-    @Column(name = "currently_watching_playing", nullable = false)
+    @Column(name = "currently_watching_playing", nullable = false, columnDefinition = "TEXT")
     private String currentlyWatchingPlaying;
 
     @Column(name = "updated_at", nullable = false)
