@@ -149,11 +149,11 @@ const CSS = [
   ".hrh-slice{position:absolute;left:0;top:0;transform-origin:0 0;background-repeat:no-repeat;backface-visibility:hidden}",
   ".hrh-line{position:absolute;left:0;top:0;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-weight:400;line-height:1;letter-spacing:-0.005em;text-transform:uppercase}",
   ".hrh-ch{display:inline-block}",
-  ".hrh-port{position:absolute;left:0;top:0;overflow:visible;background:transparent;pointer-events:none;z-index:1}",
+  ".hrh-port{position:absolute;left:0;top:0;overflow:hidden;background:var(--hof-surface);border-radius:4px}",
   ".hrh-root:not([data-ready=true]) .hrh-view,.hrh-root:not([data-ready=true]) .hrh-count,.hrh-root:not([data-ready=true]) .hrh-fade{visibility:hidden}",
   ".hrh-root[data-ready=true] .hrh-ch{animation:hrh-rise .7s cubic-bezier(.2,.75,.2,1) both}",
   ".hrh-root[data-ready=true] .hrh-port{animation:hrh-port .8s cubic-bezier(.2,.75,.2,1) .32s both}",
-  ".hrh-port img{width:100%;height:100%;object-fit:contain;object-position:bottom center;filter:drop-shadow(0 18px 36px rgba(0,0,0,0.65));-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%)}",
+  ".hrh-port img{width:100%;height:100%;object-fit:cover}",
   ".hrh-root[data-ready=true] .hrh-fade{animation:hrh-fade .7s ease-out .55s both}",
   ".hrh-nav{position:absolute;left:0;right:0;top:0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:var(--hrh-g);padding-top:calc(var(--hrh-g) * .7);padding-bottom:calc(var(--hrh-g) * .7);background:var(--hrh-bg);font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;line-height:1}",
   ".hrh-nav a{color:inherit;text-decoration:none}",
@@ -413,10 +413,10 @@ export default function HelixRibbonHero({
       place(l2, left + o2 * f, topY + capH + lg * f);
       L.l1x = left;
       L.l2x = left + o2 * f;
-      port.style.width = px((pw * 1.35 * f) / s);
-      port.style.height = px((capH * 1.45) / s);
-      port.dataset.x = String((left + (w1 / 100 + gap * 0.4) * f) / s);
-      port.dataset.y = String((topY - capH * 0.12) / s);
+      port.style.width = px((pw * f) / s);
+      port.style.height = px(capH / s);
+      port.dataset.x = String((left + (w1 / 100 + gap) * f) / s);
+      port.dataset.y = String(topY / s);
 
       const ch = countEl.offsetHeight;
       const baseline2 = topY + capH * 2 + lg * f;
@@ -696,7 +696,7 @@ export default function HelixRibbonHero({
                 draggable={false}
               />
             </div>
-            <div ref={l2Ref} className="hrh-line" aria-hidden="true" style={{ zIndex: 2 }}>
+            <div ref={l2Ref} className="hrh-line" aria-hidden="true">
               {letters(name, 0.3)}
             </div>
             <div ref={groupRef} className="hrh-group" aria-hidden="true" style={{ visibility: "hidden" }}>
