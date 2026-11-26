@@ -1,3 +1,9 @@
+import {
+  FALLBACK_CATEGORIES,
+  FALLBACK_ENTRIES,
+  FALLBACK_SITE,
+  filterFallbackEntries,
+} from "./fallbackData";
 import type {
   Category,
   CategoryInput,
@@ -60,8 +66,22 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     return undefined as T;
   }
 
+  const contentType = res.headers.get("content-type") || "";
   const text = await res.text();
-  const data = text ? JSON.parse(text) : null;
+  let data: any = null;
+  if (text) {
+    if (!contentType.includes("application/json") && text.trimStart().startsWith("<")) {
+      throw new ApiError(
+        res.status || 503,
+        "API server is not connected. Set VITE_API_BASE_URL to your Spring Boot API.",
+      );
+    }
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new ApiError(res.status || 500, "Invalid response from API server.");
+    }
+  }
 
   if (!res.ok) {
     const message = data?.message || `Request failed (${res.status})`;
@@ -71,10 +91,24 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   return data as T;
 }
 
+async function withFallback<T>(fn: () => Promise<T>, fallback: () => T): Promise<T> {
+  try {
+    return await fn();
+  } catch (err) {
+    // When deployed on a static host (e.g. Vercel) without VITE_API_BASE_URL set,
+    // /api/* returns HTML or 503; fall back to built-in sample data for public reads.
+    if (!BASE_URL && (err instanceof ApiError || err instanceof TypeError)) {
+      return fallback();
+    }
+    throw err;
+  }
+}
+
 export const api = {
   // Public
-  getSite: () => request<SiteSettings>("/api/site"),
-  getCategories: () => request<Category[]>("/api/categories"),
+  getSite: () => withFallback(() => request<SiteSettings>("/api/site"), () => FALLBACK_SITE),
+  getCategories: () =>
+    withFallback(() => request<Category[]>("/api/categories"), () => FALLBACK_CATEGORIES),
   getEntries: (params?: {
     category?: string;
     tag?: string;
@@ -89,10 +123,20 @@ export const api = {
     if (params?.sort) qs.set("sort", params.sort);
     if (params?.featured !== undefined) qs.set("featured", String(params.featured));
     const query = qs.toString();
-    return request<EntrySummary[]>(`/api/entries${query ? `?${query}` : ""}`);
+    return withFallback(
+      () => request<EntrySummary[]>(`/api/entries${query ? `?${query}` : ""}`),
+      () => filterFallbackEntries(params),
+    );
   },
   getEntryBySlug: (slug: string) =>
-    request<EntryDetail>(`/api/entries/${encodeURIComponent(slug)}`),
+    withFallback(
+      () => request<EntryDetail>(`/api/entries/${encodeURIComponent(slug)}`),
+      () => {
+        const found = FALLBACK_ENTRIES.find((e) => e.slug === slug);
+        if (!found) throw new ApiError(404, "Entry not found");
+        return found;
+      },
+    ),
 
   // Auth
   login: (username: string, password: string) =>
