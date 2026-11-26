@@ -111,7 +111,8 @@ export default function CollectionsPage() {
                 />
                 <Link
                   to={`/collections/${cat.slug}`}
-                  className="text-xs font-medium text-[var(--hof-muted)] transition-colors hover:text-[var(--hof-text)]"
+                  className="inline-flex items-center gap-1.5 font-semibold tracking-[0.03em] text-[var(--hof-text-soft)] transition-colors hover:text-[var(--hof-accent-light)]"
+                  style={{ fontSize: "var(--hof-step--1)", lineHeight: "var(--hof-leading-snug)" }}
                 >
                   View all in {cat.name} ({cat.entryCount}) &rarr;
                 </Link>

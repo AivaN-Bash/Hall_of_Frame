@@ -98,10 +98,16 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
         <div className="mb-12 flex flex-wrap items-baseline justify-between gap-4 border-b border-[var(--hof-border-subtle)] pb-4">
           <div>
-            <h2 className="font-display text-3xl uppercase tracking-tight text-[var(--hof-text)] sm:text-4xl">
+            <h2
+              className="font-display uppercase tracking-normal text-[var(--hof-text)]"
+              style={{ fontSize: "var(--hof-step-3)", lineHeight: "var(--hof-leading-tight)" }}
+            >
               Collections
             </h2>
-            <p className="mt-1 text-xs text-[var(--hof-muted)]">
+            <p
+              className="mt-1.5 text-[var(--hof-muted)]"
+              style={{ fontSize: "var(--hof-step--1)", lineHeight: "var(--hof-leading-body)" }}
+            >
               Open a folder to fan out its entries, or browse a full category.
             </p>
           </div>
@@ -180,7 +186,8 @@ export default function HomePage() {
                   />
                   <Link
                     to={`/collections/${cat.slug}`}
-                    className="text-xs font-medium text-[var(--hof-muted)] transition-colors hover:text-[var(--hof-text)]"
+                    className="inline-flex items-center gap-1.5 font-semibold tracking-[0.03em] text-[var(--hof-text-soft)] transition-colors hover:text-[var(--hof-accent-light)]"
+                    style={{ fontSize: "var(--hof-step--1)", lineHeight: "var(--hof-leading-snug)" }}
                   >
                     Browse {cat.name} &rarr;
                   </Link>
