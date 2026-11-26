@@ -73,7 +73,7 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     if (!contentType.includes("application/json") && text.trimStart().startsWith("<")) {
       throw new ApiError(
         res.status || 503,
-        "API server is not connected. Set VITE_API_BASE_URL to your Spring Boot API.",
+        "Backend API is not connected yet. Deploy /api and set VITE_API_BASE_URL in Vercel.",
       );
     }
     try {
@@ -84,6 +84,12 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   }
 
   if (!res.ok) {
+    if (res.status === 405 && !BASE_URL) {
+      throw new ApiError(
+        405,
+        "Backend API is not connected yet. Deploy /api and set VITE_API_BASE_URL in Vercel.",
+      );
+    }
     const message = data?.message || `Request failed (${res.status})`;
     throw new ApiError(res.status, message, data?.fieldErrors);
   }
