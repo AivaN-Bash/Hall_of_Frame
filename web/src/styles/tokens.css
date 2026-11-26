@@ -1,0 +1,36 @@
+:root {
+  /* Exact 10-colour Hall of Fame palette */
+  --hof-text: #e0c2d5;
+  --hof-text-soft: #d6b2c6;
+  --hof-muted: #c59bb6;
+  --hof-accent-light: #a678a2;
+  --hof-accent: #7c4a8e;
+  --hof-accent-deep: #5b2c6f;
+  --hof-card: #3a1e5d;
+  --hof-surface: #1b0e4a;
+  --hof-bg: #0d0a38;
+  --hof-shadow: #000000;
+
+  /* Semantic tokens */
+  --background: var(--hof-bg);
+  --foreground: var(--hof-text);
+  --surface: var(--hof-surface);
+  --card: var(--hof-card);
+  --card-foreground: var(--hof-text);
+  --muted: var(--hof-surface);
+  --muted-foreground: var(--hof-muted);
+  --primary: var(--hof-accent-light);
+  --primary-foreground: var(--hof-shadow);
+  --secondary: var(--hof-accent-deep);
+  --secondary-foreground: var(--hof-text);
+  --border: var(--hof-accent);
+  --input: var(--hof-card);
+  --ring: var(--hof-accent-light);
+  --danger: #f08ca4;
+
+  /* Derived surface overlays using color-mix (no hard-coded new hexes) */
+  --hof-border-subtle: color-mix(in srgb, var(--hof-accent) 45%, transparent);
+  --hof-glass-dark: color-mix(in srgb, var(--hof-shadow) 72%, var(--hof-bg));
+  --hof-card-hover: color-mix(in srgb, var(--hof-card) 82%, var(--hof-accent-deep));
+  --hof-danger-bg: color-mix(in srgb, var(--hof-accent-deep) 40%, var(--hof-shadow));
+}

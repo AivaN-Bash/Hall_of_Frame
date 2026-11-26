@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: hall-of-fame-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-hall_of_fame}
+      POSTGRES_USER: ${POSTGRES_USER:-hof_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hof_dev_password}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - hof_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hof_user} -d ${POSTGRES_DB:-hall_of_fame}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  hof_pgdata:

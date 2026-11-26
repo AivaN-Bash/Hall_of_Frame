@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:halloffametest;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+app:
+  admin:
+    username: testadmin
+    password: test-password-123
+  jwt:
+    secret: test-secret-key-that-is-plenty-long-for-hmac-sha256
+    expiry-seconds: 3600
+  storage:
+    local-dir: ./target/test-uploads

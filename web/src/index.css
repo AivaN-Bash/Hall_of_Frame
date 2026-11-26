@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+@theme {
+  --color-hof-text: var(--hof-text);
+  --color-hof-text-soft: var(--hof-text-soft);
+  --color-hof-muted: var(--hof-muted);
+  --color-hof-accent-light: var(--hof-accent-light);
+  --color-hof-accent: var(--hof-accent);
+  --color-hof-accent-deep: var(--hof-accent-deep);
+  --color-hof-card: var(--hof-card);
+  --color-hof-surface: var(--hof-surface);
+  --color-hof-bg: var(--hof-bg);
+  --color-hof-shadow: var(--hof-shadow);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-display: "Anton", Impact, "Arial Narrow", sans-serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--hof-bg);
+    color: var(--hof-text);
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background-color: var(--hof-bg);
+    color: var(--hof-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--hof-accent-light);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

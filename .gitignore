@@ -1,0 +1,18 @@
+# Dependencies & build artifacts
+node_modules/
+web/dist/
+api/target/
+
+# Environment & local uploads
+.env
+api/.env
+web/.env
+api/uploads/
+uploads/
+
+# IDE & OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
