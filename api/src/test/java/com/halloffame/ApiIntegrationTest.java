@@ -54,7 +54,7 @@ class ApiIntegrationTest {
             .andExpect(jsonPath("$.title").value("DARK"))
             .andExpect(jsonPath("$.tier").value("S"))
             .andExpect(jsonPath("$.tags", hasSize(greaterThanOrEqualTo(1))))
-            .andExpect(jsonPath("$.nextEntry.slug").value("severance"))
+            .andExpect(jsonPath("$.nextEntry.slug").value("the-queen-s-gambit"))
             .andExpect(jsonPath("$.relatedEntries", hasSize(greaterThanOrEqualTo(1))));
     }
 
@@ -65,10 +65,10 @@ class ApiIntegrationTest {
             .andExpect(jsonPath("$", hasSize(1)))
             .andExpect(jsonPath("$[0].slug").value("dark"));
 
-        mockMvc.perform(get("/api/entries").param("tag", "time-loop").param("sort", "rating"))
+        mockMvc.perform(get("/api/entries").param("tag", "fantasy").param("sort", "rating"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
-            .andExpect(jsonPath("$[0].rating", greaterThanOrEqualTo(9.8)));
+            .andExpect(jsonPath("$[0].rating", greaterThanOrEqualTo(9.5)));
     }
 
     @Test

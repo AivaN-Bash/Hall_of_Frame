@@ -55,7 +55,7 @@ public class AdminBootstrapService implements ApplicationRunner {
             defaults.setGreeting("Hey, I'm");
             defaults.setHeroName("Phawat");
             defaults.setHeroBio("A living archive of the series, films, anime, games, and albums that stayed with me—and why.");
-            defaults.setPortraitUrl("");
+            defaults.setPortraitUrl("/pics/me.png");
             defaults.setAboutBio("Collector of unforgettable worlds, needle-drops, and stories that refuse to leave my head.");
             defaults.setAboutPurpose("I built this Hall of Fame so my favourite media lives in one calm, personal space instead of scattered lists.");
             defaults.setCurrentlyWatchingPlaying("Rewatching DARK, listening to late-night synth soundtracks, and curating new entries.");

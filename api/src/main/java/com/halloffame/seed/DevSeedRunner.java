@@ -8,8 +8,6 @@ import com.halloffame.repository.EntryRepository;
 import com.halloffame.service.CategoryService;
 import com.halloffame.service.EntryService;
 import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.List;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -54,7 +52,7 @@ public class DevSeedRunner implements ApplicationRunner {
             series.id(),
             "DARK",
             2017,
-            svgArtwork("DARK", "SERIES · 2017", "#090c0e", "#1a2124", "#e0a82e", 1),
+            "/pics/dark.jpg",
             "#e0a82e",
             "A puzzle-box family mystery set in a quiet rain-soaked forest town across connected eras.",
             new BigDecimal("9.8"),
@@ -69,164 +67,121 @@ public class DevSeedRunner implements ApplicationRunner {
 
         entryService.create(new UpsertEntryRequest(
             series.id(),
-            "Severance",
-            2022,
-            svgArtwork("SEVERANCE", "SERIES · 2022", "#1b0e4a", "#5b2c6f", "#d6b2c6", 2),
-            "#d6b2c6",
-            "Sterile fluorescent hallways hiding an eerie meditation on identity and work.",
-            new BigDecimal("9.4"),
+            "The Queen's Gambit",
+            2020,
+            "/pics/queens-gambit.jpg",
+            "#c8c6be",
+            "An orphan prodigy turns sixty-four squares into a battlefield of obsession and grace.",
+            new BigDecimal("9.3"),
             Tier.S,
-            "The contrast between deadpan office absurdity and mounting dread is razor sharp. Every symmetrical corridor shot feels claustrophobic, yet the characters' quiet camaraderie makes the rebellion intensely moving.",
-            "The season finale elevator switch sequence where every second counts.",
-            "Helly R. — refusing to accept a life without agency.",
+            "Every chess match feels like a high-stakes duel even if you barely know the openings. The wardrobe, mid-century production design, and Beth Harmon's quiet intensity make every quiet room electric.",
+            "Looking up at the ceiling in Moscow as the final endgame clicks into place.",
+            "Beth Harmon — sharp, guarded, and endlessly compelling.",
             true,
             2,
-            List.of("sci-fi", "mystery", "thriller")
+            List.of("drama", "coming-of-age")
         ));
 
         entryService.create(new UpsertEntryRequest(
             films.id(),
-            "Arrival",
-            2016,
-            svgArtwork("ARRIVAL", "FILM · 2016", "#0d0a38", "#1b0e4a", "#c59bb6", 3),
-            "#c59bb6",
-            "First contact told through linguistics, grief, and the shape of memory.",
-            new BigDecimal("9.6"),
+            "Catch Me If You Can",
+            2002,
+            "/pics/catch-me-if-you-can.jpg",
+            "#e0a82e",
+            "A breezy cat-and-mouse chase built on charm, loneliness, and forged checks.",
+            new BigDecimal("9.2"),
             Tier.S,
-            "It treats communication as a patient puzzle rather than a firefight. The sound design hums through your chest, and the emotional framing reframes every scene on a second watch.",
-            "Decoding the circular ink logograms as the score swells in the mist.",
-            "Louise Banks — choosing presence even while knowing the cost.",
+            "Spielberg directs it with effortless momentum, yet underneath the caper is a surprisingly tender story about a kid trying to outrun a broken home. The cat-and-mouse dynamic between Frank and Carl never gets old.",
+            "The Christmas Eve phone call where pursuit turns into the only family either of them has.",
+            "Carl Hanratty — weary persistence hiding genuine care.",
             true,
             1,
-            List.of("sci-fi", "drama", "slow-burn")
-        ));
-
-        entryService.create(new UpsertEntryRequest(
-            films.id(),
-            "Spirited Away",
-            2001,
-            svgArtwork("SPIRITED AWAY", "FILM · 2001", "#1b0e4a", "#7c4a8e", "#e0c2d5", 4),
-            "#e0c2d5",
-            "A threshold into a dreamlike bathhouse world of spirits, labor, and courage.",
-            new BigDecimal("9.5"),
-            Tier.S,
-            "Every frame breathes with lived-in texture: steam rising from wooden tubs, quiet train rides over flooded tracks, and small moments of kindness in a strange place.",
-            "The silent train journey across endless shallow water at dusk.",
-            "Chihiro — growing steady without losing her warmth.",
-            true,
-            2,
-            List.of("animation", "fantasy", "coming-of-age")
-        ));
-
-        entryService.create(new UpsertEntryRequest(
-            anime.id(),
-            "Steins;Gate",
-            2011,
-            svgArtwork("STEINS;GATE", "ANIME · 2011", "#000000", "#3a1e5d", "#a678a2", 5),
-            "#a678a2",
-            "From cluttered summer lab banter to a relentless race against causality.",
-            new BigDecimal("9.5"),
-            Tier.S,
-            "The slow, quirky first half makes the sudden tonal turn devastating because you genuinely care about every person in that tiny apartment lab.",
-            "The realization that undoing each message requires giving up something precious.",
-            "Kurisu Makise — sharp wit hiding deep loyalty.",
-            true,
-            1,
-            List.of("sci-fi", "time-loop", "thriller", "anime")
+            List.of("drama", "crime")
         ));
 
         entryService.create(new UpsertEntryRequest(
             anime.id(),
             "Frieren: Beyond Journey's End",
             2023,
-            svgArtwork("FRIEREN", "ANIME · 2023", "#0d0a38", "#5b2c6f", "#e0c2d5", 6),
-            "#e0c2d5",
+            "/pics/frieren.jpg",
+            "#e6e4dd",
             "What happens after the grand quest ends, measured in decades and small memories.",
-            new BigDecimal("9.3"),
+            new BigDecimal("9.6"),
             Tier.S,
             "Instead of rushing toward the next boss battle, it lingers on changing seasons, half-remembered kindnesses, and learning to notice people while they are still here.",
             "The quiet meteor shower seen decades later with new companions.",
             "Frieren — centuries of quiet reflection distilled into gentle curiosity.",
-            false,
-            2,
+            true,
+            1,
             List.of("fantasy", "slow-burn", "anime")
         ));
 
         entryService.create(new UpsertEntryRequest(
-            games.id(),
-            "Outer Wilds",
-            2019,
-            svgArtwork("OUTER WILDS", "GAME · 2019", "#000000", "#1b0e4a", "#d6b2c6", 7),
-            "#d6b2c6",
-            "A miniature solar system where curiosity is the only progression system.",
-            new BigDecimal("9.9"),
+            anime.id(),
+            "Made in Abyss",
+            2017,
+            "/pics/made-in-abyss.jpg",
+            "#929994",
+            "A luminous, terrifying descent into an uncharted vertical world.",
+            new BigDecimal("9.4"),
             Tier.S,
-            "Nothing is gated behind upgrades or skill trees—only your own understanding of how a clockwork universe fits together. Every twenty-two-minute loop brings an unforgettable discovery.",
-            "Hearing the distant banjo echo across a collapsing cavern while the star shifts color.",
-            "The Travelers — campfire music at the edge of everything.",
+            "Kevin Penkin's score and the breathtaking painted backgrounds draw you into a fairy-tale expedition, before the Abyss reveals how merciless and unforgettable its depths really are.",
+            "Descending through the Sea of Corpses as the music swells over the abyssal horizon.",
+            "Nanachi — carrying grief with quiet resilience.",
+            false,
+            2,
+            List.of("fantasy", "mystery", "anime")
+        ));
+
+        entryService.create(new UpsertEntryRequest(
+            anime.id(),
+            "Vinland Saga",
+            2019,
+            "/pics/vinland-saga.jpg",
+            "#c8c6be",
+            "A story about vengeance that grows into a meditation on peace and redemption.",
+            new BigDecimal("9.5"),
+            Tier.S,
+            "Watching Thorfinn's transformation from consumed by rage to asking what it truly means to be a warrior is one of the most earned character arcs in any medium.",
+            "Thorfinn declaring he has no enemies.",
+            "Askeladd — cynical, brilliant, and tragic to the very end.",
             true,
-            1,
-            List.of("sci-fi", "mystery", "time-loop", "indie")
+            3,
+            List.of("drama", "anime")
         ));
 
         entryService.create(new UpsertEntryRequest(
             games.id(),
-            "Hollow Knight",
-            2017,
-            svgArtwork("HOLLOW KNIGHT", "GAME · 2017", "#0d0a38", "#3a1e5d", "#c59bb6", 8),
-            "#c59bb6",
-            "Hand-drawn subterranean melancholy paired with razor-tight exploration.",
-            new BigDecimal("9.2"),
-            Tier.A,
-            "Getting lost in a fallen kingdom feels wondrous rather than frustrating because every screen rewards observation with lore, music, and crisp combat rhythm.",
-            "Stepping into the rain-swept City of Tears for the very first time.",
-            "Quirrel — a wandering scholar taking in the quiet view by the lake.",
+            "Metaphor: ReFantazio",
+            2024,
+            "/pics/metaphor.jpg",
+            "#e0a82e",
+            "A royal tournament across a fractured fantasy realm driven by ideals and style.",
+            new BigDecimal("9.5"),
+            Tier.S,
+            "Every menu, battle transition, and road-trip camp scene bursts with craft. It takes classic turn-based JRPG structure and infuses it with political stakes and unforgettable party camaraderie.",
+            "Setting out on the Gauntlet Runner across the kingdom with the whole crew.",
+            "Strohl — noble resolve anchored by loyalty.",
+            true,
+            1,
+            List.of("fantasy", "jrpg")
+        ));
+
+        entryService.create(new UpsertEntryRequest(
+            games.id(),
+            "Persona 4 Golden",
+            2012,
+            "/pics/persona-4-golden.jpg",
+            "#e0a82e",
+            "Rainy days in Inaba, a midnight TV mystery, and friends you never want to leave.",
+            new BigDecimal("9.4"),
+            Tier.S,
+            "No game captures small-town warmth quite like Inaba. Balancing school days, part-time jobs, and chasing the truth inside the TV makes the Investigation Team feel like real friends.",
+            "Walking home through the fog while 'Heartbeat, Heartbreak' plays.",
+            "The Investigation Team — Junes afternoons that feel like home.",
             false,
             2,
-            List.of("indie", "fantasy", "metroidvania")
+            List.of("mystery", "jrpg")
         ));
-    }
-
-    private static String svgArtwork(
-        String title,
-        String subtitle,
-        String bgDark,
-        String bgMid,
-        String accent,
-        int variant
-    ) {
-        int cx1 = 120 + (variant * 47) % 240;
-        int cy1 = 80 + (variant * 31) % 160;
-        int cx2 = 420 - (variant * 39) % 200;
-        int cy2 = 240 - (variant * 27) % 120;
-        String safeTitle = escapeXml(title);
-        String safeSubtitle = escapeXml(subtitle);
-        String svg = """
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%%" stop-color="%s"/>
-                  <stop offset="55%%" stop-color="%s"/>
-                  <stop offset="100%%" stop-color="#000000"/>
-                </linearGradient>
-              </defs>
-              <rect width="600" height="400" fill="url(#g)"/>
-              <circle cx="%d" cy="%d" r="145" fill="%s" fill-opacity="0.22"/>
-              <circle cx="%d" cy="%d" r="110" fill="#e6e4dd" fill-opacity="0.08"/>
-              <rect x="34" y="34" width="532" height="332" rx="18" fill="none" stroke="%s" stroke-opacity="0.45" stroke-width="1.5"/>
-              <text x="56" y="84" fill="%s" font-family="ui-monospace, monospace" font-size="14" letter-spacing="3">%s</text>
-              <text x="56" y="316" fill="#e6e4dd" font-family="system-ui, sans-serif" font-weight="700" font-size="38" letter-spacing="1">%s</text>
-            </svg>
-            """.formatted(bgDark, bgMid, cx1, cy1, accent, cx2, cy2, accent, accent, safeSubtitle, safeTitle);
-        String encoded = Base64.getEncoder().encodeToString(svg.getBytes(StandardCharsets.UTF_8));
-        return "data:image/svg+xml;base64," + encoded;
-    }
-
-    private static String escapeXml(String s) {
-        return s.replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;")
-            .replace("\"", "&quot;")
-            .replace("'", "&apos;");
     }
 }

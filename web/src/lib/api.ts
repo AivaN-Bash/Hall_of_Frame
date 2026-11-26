@@ -45,7 +45,12 @@ export function setStoredToken(token: string | null) {
 
 export function resolveAssetUrl(url: string | null | undefined): string {
   if (!url) return "";
-  if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:")) {
+  if (
+    url.startsWith("http://") ||
+    url.startsWith("https://") ||
+    url.startsWith("data:") ||
+    url.startsWith("/pics/")
+  ) {
     return url;
   }
   return `${BASE_URL}${url.startsWith("/") ? "" : "/"}${url}`;
