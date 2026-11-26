@@ -350,13 +350,13 @@ export default function HelixRibbonHero({
       L.g = g;
 
       // helix
-      const U = mobile ? W * 0.88 : Math.max(Math.min(W, H * 1.6), H * 0.62);
+      const U = mobile ? W * 0.68 : Math.max(Math.min(W, H * 1.6), H * 0.62);
       L.cw = U * 0.4;
       L.ch = L.cw / 1.5;
       L.dTheta = (Math.PI * 2) / HELIX.perTurn;
       L.R = L.cw / L.dTheta;
-      L.pitch = L.ch * HELIX.pitch;
-      L.persp = U * 1.05;
+      L.pitch = L.ch * (mobile ? 1.5 : HELIX.pitch);
+      L.persp = U * (mobile ? 1.3 : 1.05);
       view.style.perspective = px(L.persp);
       const sw = 2 * L.R * Math.sin(L.dTheta / S / 2);
       const dy = (L.pitch * (L.dTheta / S)) / (Math.PI * 2);
@@ -404,12 +404,12 @@ export default function HelixRibbonHero({
       const bw = Math.max(w1 / 100 + gap + pw, o2 + w2 / 100);
       const bh = cap * 2 + lg;
       const f = Math.min(
-        ((mobile ? 0.82 : 0.8) * W) / bw,
-        ((mobile ? 0.34 : 0.47) * H) / bh,
+        ((mobile ? 0.72 : 0.8) * W) / bw,
+        ((mobile ? 0.30 : 0.47) * H) / bh,
       );
       const capH = cap * f;
-      const left = -(bw * f) / 2 + (mobile ? 0 : W * 0.015);
-      const topY = H * (mobile ? -0.08 : -0.06) - (bh * f) / 2;
+      const left = -(bw * f) / 2 + (mobile ? -W * 0.02 : W * 0.015);
+      const topY = H * (mobile ? -0.06 : -0.06) - (bh * f) / 2;
       const place = (el: HTMLElement, x: number, capTop: number) => {
         el.style.fontSize = px(f / s);
         el.dataset.x = String(x / s);
@@ -509,9 +509,9 @@ export default function HelixRibbonHero({
           "," +
           px(-L.R) +
           ") rotateZ(" +
-          HELIX.tiltZ +
+          (W < 720 ? -10 : HELIX.tiltZ) +
           "deg) rotateX(" +
-          HELIX.tiltX +
+          (W < 720 ? -6 : HELIX.tiltX) +
           "deg)";
         screw.style.transform =
           "rotateY(" + ((phi * 180) / Math.PI).toFixed(3) + "deg) translateY(" + px(screwY) + ")";
