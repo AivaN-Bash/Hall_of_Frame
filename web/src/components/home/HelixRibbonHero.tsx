@@ -172,7 +172,7 @@ const CSS = [
   ".hrh-card-img img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}",
   ".hrh-card:hover .hrh-card-img img{transform:scale(1.03)}",
   ".hrh-cap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding-top:14px}",
-  ".hrh-cap span:first-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.25rem,1.05rem + .75vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;color:var(--hof-text);transition:color .2s ease}",
+  ".hrh-cap span:first-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;color:var(--hof-text);transition:color .2s ease}",
   ".hrh-card:hover .hrh-cap span:first-child{color:var(--hof-accent-light)}",
   ".hrh-cap span:last-child{font-size:var(--hof-step--2);font-weight:600;letter-spacing:.1em;line-height:1.2;color:var(--hof-muted)}",
   "@keyframes hrh-rise{from{transform:translateY(60%);filter:blur(12px);opacity:0}60%{opacity:1}to{transform:none;filter:blur(0);opacity:1}}",
@@ -345,7 +345,7 @@ export default function HelixRibbonHero({
       L.g = g;
 
       // helix
-      const U = Math.max(Math.min(W, H * 1.6), H * 0.62);
+      const U = mobile ? W * 0.88 : Math.max(Math.min(W, H * 1.6), H * 0.62);
       L.cw = U * 0.4;
       L.ch = L.cw / 1.5;
       L.dTheta = (Math.PI * 2) / HELIX.perTurn;
@@ -399,8 +399,8 @@ export default function HelixRibbonHero({
       const bw = Math.max(w1 / 100 + gap + pw, o2 + w2 / 100);
       const bh = cap * 2 + lg;
       const f = Math.min(
-        ((mobile ? 0.9 : 0.8) * W) / bw,
-        ((mobile ? 0.36 : 0.47) * H) / bh,
+        ((mobile ? 0.82 : 0.8) * W) / bw,
+        ((mobile ? 0.34 : 0.47) * H) / bh,
       );
       const capH = cap * f;
       const left = -(bw * f) / 2 + (mobile ? 0 : W * 0.015);
@@ -498,7 +498,7 @@ export default function HelixRibbonHero({
         const centre = -(span / 2) + screwY;
         group.style.transform =
           "translate3d(" +
-          px(-W * 0.04) +
+          px(W < 720 ? 0 : -W * 0.04) +
           "," +
           px(rise - centre) +
           "," +
@@ -641,6 +641,7 @@ export default function HelixRibbonHero({
     const ro = new ResizeObserver(() => layout());
     ro.observe(stage);
     layout();
+    document.fonts?.ready.then(() => layout());
     cur = auto ? 0 : target();
     draw(true);
     root.setAttribute("data-ready", "true");
