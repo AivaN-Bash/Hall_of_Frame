@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { TextGradient } from "@/components/ui/text-gradient";
 
 /**
  * HelixRibbonHero — ported from /refs/helix-ribbon-hero.tsx.
@@ -703,7 +704,16 @@ export default function HelixRibbonHero({
               />
             </div>
             <div ref={l2Ref} className="hrh-line" aria-hidden="true">
-              {letters(name, 0.3)}
+              <TextGradient
+                as="span"
+                colors={["#e6e4dd", "#e0a82e", "#f5c518", "#929994", "#e0a82e"]}
+                duration={6}
+                angle={135}
+                className="hrh-ch"
+                transition={{ duration: 6, ease: "linear", repeat: Number.POSITIVE_INFINITY }}
+              >
+                {name}
+              </TextGradient>
             </div>
             <div ref={groupRef} className="hrh-group" aria-hidden="true" style={{ visibility: "hidden" }}>
               <div ref={screwRef} className="hrh-screw">
