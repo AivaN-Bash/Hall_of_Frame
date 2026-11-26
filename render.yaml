@@ -1,0 +1,45 @@
+databases:
+  - name: hall-of-fame-db
+    plan: free
+    databaseName: hall_of_fame
+    user: hof_user
+
+services:
+  - type: web
+    name: hall-of-fame-api
+    runtime: docker
+    plan: free
+    rootDir: api
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/site
+    envVars:
+      - key: PGHOST
+        fromDatabase:
+          name: hall-of-fame-db
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: hall-of-fame-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: hall-of-fame-db
+          property: database
+      - key: PGUSER
+        fromDatabase:
+          name: hall-of-fame-db
+          property: user
+      - key: PGPASSWORD
+        fromDatabase:
+          name: hall-of-fame-db
+          property: password
+      - key: CORS_ALLOWED_ORIGIN
+        value: https://web-two-theta-28.vercel.app
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SPRING_PROFILES_ACTIVE
+        value: dev
