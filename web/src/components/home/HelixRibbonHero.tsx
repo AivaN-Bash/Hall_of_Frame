@@ -171,10 +171,9 @@ const CSS = [
   ".hrh-card:hover .hrh-card-img{border-color:var(--hof-accent-light)}",
   ".hrh-card-img img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}",
   ".hrh-card:hover .hrh-card-img img{transform:scale(1.03)}",
-  ".hrh-cap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding-top:14px}",
-  ".hrh-cap span:first-child{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;color:var(--hof-text);transition:color .2s ease}",
-  ".hrh-card:hover .hrh-cap span:first-child{color:var(--hof-accent-light)}",
-  ".hrh-cap span:last-child{font-size:var(--hof-step--2);font-weight:600;letter-spacing:.1em;line-height:1.2;color:var(--hof-muted)}",
+  ".hrh-cap{display:flex;justify-content:center;text-align:center;padding-top:14px}",
+  ".hrh-cap span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;color:var(--hof-text);transition:color .2s ease}",
+  ".hrh-card:hover .hrh-cap span{color:var(--hof-accent-light)}",
   "@keyframes hrh-rise{from{transform:translateY(60%);filter:blur(12px);opacity:0}60%{opacity:1}to{transform:none;filter:blur(0);opacity:1}}",
   "@keyframes hrh-port{from{clip-path:inset(0 0 100% 0);filter:blur(8px)}to{clip-path:inset(0 0 0 0);filter:blur(0)}}",
   "@keyframes hrh-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}",
@@ -438,7 +437,7 @@ export default function HelixRibbonHero({
       L.cols = cols;
       L.tw = (W - 2 * g - (cols - 1) * gx) / cols;
       L.th = L.tw / 1.5;
-      const capRow = 58;
+      const capRow = 42;
       const rows = Math.max(1, Math.ceil(tiles.length / cols));
       L.gridH = rows * (L.th + capRow) + (rows - 1) * gy;
       L.top = navH + (mobile ? 12 : g * 0.6);
@@ -740,9 +739,6 @@ export default function HelixRibbonHero({
                 </div>
                 <div className="hrh-cap" style={{ opacity: 0 }}>
                   <span>{pr.title}</span>
-                  <span>
-                    {i + 1}/{tiles.length}
-                  </span>
                 </div>
               </>
             );

@@ -47,9 +47,16 @@ export default function HomePage() {
   }, [loadData]);
 
   const heroProjects: HelixProject[] = React.useMemo(() => {
+    const heroOrder = ["dark", "frieren", "queen", "metaphor", "vinland", "catch-me"];
+    const rankOf = (slug: string) => {
+      const idx = heroOrder.findIndex((key) => slug.toLowerCase().includes(key));
+      return idx === -1 ? heroOrder.length : idx;
+    };
     const featured = entries.filter((e) => e.featured);
     const nonFeatured = entries.filter((e) => !e.featured);
-    const ordered = [...featured, ...nonFeatured].slice(0, 12);
+    const ordered = [...featured, ...nonFeatured]
+      .sort((a, b) => rankOf(a.slug) - rankOf(b.slug))
+      .slice(0, 12);
     return ordered.map((e) => ({
       src: resolveAssetUrl(e.posterUrl),
       title: e.title,
