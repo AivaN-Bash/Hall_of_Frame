@@ -39,13 +39,16 @@ public class AdminBootstrapService implements ApplicationRunner {
         String username = properties.admin().username();
         String password = properties.admin().password();
         if (username != null && !username.isBlank() && password != null && !password.isBlank()) {
-            userRepository.findByUsername(username).orElseGet(() -> {
-                UserEntity admin = new UserEntity();
-                admin.setUsername(username);
-                admin.setPasswordHash(passwordEncoder.encode(password));
-                admin.setRole("ADMIN");
-                return userRepository.save(admin);
+            UserEntity admin = userRepository.findByUsername(username).orElseGet(() -> {
+                UserEntity created = new UserEntity();
+                created.setUsername(username);
+                created.setRole("ADMIN");
+                return created;
             });
+            if (admin.getPasswordHash() == null || !passwordEncoder.matches(password, admin.getPasswordHash())) {
+                admin.setPasswordHash(passwordEncoder.encode(password));
+                userRepository.save(admin);
+            }
         }
 
         if (siteSettingsRepository.findById((short) 1).isEmpty()) {
