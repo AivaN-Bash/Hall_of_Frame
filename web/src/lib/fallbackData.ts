@@ -15,10 +15,10 @@ function svgPoster(title: string, subtitle: string, bgDark: string, bgMid: strin
     </defs>
     <rect width="600" height="400" fill="url(#g)"/>
     <circle cx="${cx1}" cy="${cy1}" r="145" fill="${accent}" fill-opacity="0.22"/>
-    <circle cx="${cx2}" cy="${cy2}" r="110" fill="#e0c2d5" fill-opacity="0.10"/>
+    <circle cx="${cx2}" cy="${cy2}" r="110" fill="#e6e4dd" fill-opacity="0.08"/>
     <rect x="34" y="34" width="532" height="332" rx="18" fill="none" stroke="${accent}" stroke-opacity="0.45" stroke-width="1.5"/>
     <text x="56" y="84" fill="${accent}" font-family="ui-monospace, monospace" font-size="14" letter-spacing="3">${subtitle}</text>
-    <text x="56" y="316" fill="#e0c2d5" font-family="system-ui, sans-serif" font-weight="700" font-size="38" letter-spacing="1">${title}</text>
+    <text x="56" y="316" fill="#e6e4dd" font-family="system-ui, sans-serif" font-weight="700" font-size="38" letter-spacing="1">${title}</text>
   </svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
@@ -34,8 +34,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "DARK",
     slug: "dark",
     releaseYear: 2017,
-    posterUrl: svgPoster("DARK", "SERIES · 2017", "#0d0a38", "#3a1e5d", "#a678a2", 1),
-    accentColor: "#a678a2",
+    posterUrl: svgPoster("DARK", "SERIES · 2017", "#090c0e", "#1a2124", "#e0a82e", 1),
+    accentColor: "#e0a82e",
     tagline: "A puzzle-box family mystery set in a quiet rain-soaked forest town across connected eras.",
     rating: 9.8,
     tier: "S",
@@ -66,8 +66,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Severance",
     slug: "severance",
     releaseYear: 2022,
-    posterUrl: svgPoster("SEVERANCE", "SERIES · 2022", "#1b0e4a", "#5b2c6f", "#d6b2c6", 2),
-    accentColor: "#d6b2c6",
+    posterUrl: svgPoster("SEVERANCE", "SERIES · 2022", "#111619", "#3d4a44", "#c8c6be", 2),
+    accentColor: "#c8c6be",
     tagline: "Sterile fluorescent hallways hiding an eerie meditation on identity and work.",
     rating: 9.4,
     tier: "S",
@@ -96,8 +96,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Arrival",
     slug: "arrival",
     releaseYear: 2016,
-    posterUrl: svgPoster("ARRIVAL", "FILM · 2016", "#0d0a38", "#1b0e4a", "#c59bb6", 3),
-    accentColor: "#c59bb6",
+    posterUrl: svgPoster("ARRIVAL", "FILM · 2016", "#090c0e", "#111619", "#929994", 3),
+    accentColor: "#929994",
     tagline: "First contact told through linguistics, grief, and the shape of memory.",
     rating: 9.6,
     tier: "S",
@@ -126,8 +126,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Spirited Away",
     slug: "spirited-away",
     releaseYear: 2001,
-    posterUrl: svgPoster("SPIRITED AWAY", "FILM · 2001", "#1b0e4a", "#7c4a8e", "#e0c2d5", 4),
-    accentColor: "#e0c2d5",
+    posterUrl: svgPoster("SPIRITED AWAY", "FILM · 2001", "#111619", "#3d4a44", "#e0a82e", 4),
+    accentColor: "#e0a82e",
     tagline: "A threshold into a dreamlike bathhouse world of spirits, labor, and courage.",
     rating: 9.5,
     tier: "S",
@@ -155,8 +155,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Steins;Gate",
     slug: "steins-gate",
     releaseYear: 2011,
-    posterUrl: svgPoster("STEINS;GATE", "ANIME · 2011", "#000000", "#3a1e5d", "#a678a2", 5),
-    accentColor: "#a678a2",
+    posterUrl: svgPoster("STEINS;GATE", "ANIME · 2011", "#000000", "#1a2124", "#e0a82e", 5),
+    accentColor: "#e0a82e",
     tagline: "From cluttered summer lab banter to a relentless race against causality.",
     rating: 9.5,
     tier: "S",
@@ -185,8 +185,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Frieren: Beyond Journey's End",
     slug: "frieren-beyond-journey-s-end",
     releaseYear: 2023,
-    posterUrl: svgPoster("FRIEREN", "ANIME · 2023", "#0d0a38", "#5b2c6f", "#e0c2d5", 6),
-    accentColor: "#e0c2d5",
+    posterUrl: svgPoster("FRIEREN", "ANIME · 2023", "#090c0e", "#3d4a44", "#e6e4dd", 6),
+    accentColor: "#e6e4dd",
     tagline: "What happens after the grand quest ends, measured in decades and small memories.",
     rating: 9.3,
     tier: "S",
@@ -214,8 +214,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Outer Wilds",
     slug: "outer-wilds",
     releaseYear: 2019,
-    posterUrl: svgPoster("OUTER WILDS", "GAME · 2019", "#000000", "#1b0e4a", "#d6b2c6", 7),
-    accentColor: "#d6b2c6",
+    posterUrl: svgPoster("OUTER WILDS", "GAME · 2019", "#000000", "#111619", "#e0a82e", 7),
+    accentColor: "#e0a82e",
     tagline: "A miniature solar system where curiosity is the only progression system.",
     rating: 9.9,
     tier: "S",
@@ -244,8 +244,8 @@ export const FALLBACK_ENTRIES: EntryDetail[] = [
     title: "Hollow Knight",
     slug: "hollow-knight",
     releaseYear: 2017,
-    posterUrl: svgPoster("HOLLOW KNIGHT", "GAME · 2017", "#0d0a38", "#3a1e5d", "#c59bb6", 8),
-    accentColor: "#c59bb6",
+    posterUrl: svgPoster("HOLLOW KNIGHT", "GAME · 2017", "#090c0e", "#1a2124", "#c8c6be", 8),
+    accentColor: "#c8c6be",
     tagline: "Hand-drawn subterranean melancholy paired with razor-tight exploration.",
     rating: 9.2,
     tier: "A",

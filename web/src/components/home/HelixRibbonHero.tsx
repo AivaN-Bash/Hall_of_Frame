@@ -55,15 +55,15 @@ function makeFallbackArt(index: number, label: string): string {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
     <defs>
       <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#1b0e4a"/>
-        <stop offset="55%" stop-color="#3a1e5d"/>
-        <stop offset="100%" stop-color="#0d0a38"/>
+        <stop offset="0%" stop-color="#111619"/>
+        <stop offset="55%" stop-color="#1a2124"/>
+        <stop offset="100%" stop-color="#090c0e"/>
       </linearGradient>
     </defs>
     <rect width="600" height="400" fill="url(#g)"/>
-    <circle cx="${160 + (index * 47) % 240}" cy="${120 + (index * 31) % 150}" r="120" fill="#a678a2" fill-opacity="0.18"/>
-    <rect x="28" y="28" width="544" height="344" rx="16" fill="none" stroke="#7c4a8e" stroke-opacity="0.45" stroke-width="1.5"/>
-    <text x="48" y="340" fill="#e0c2d5" font-family="system-ui, sans-serif" font-weight="700" font-size="24" letter-spacing="2">${label}</text>
+    <circle cx="${160 + (index * 47) % 240}" cy="${120 + (index * 31) % 150}" r="120" fill="#e0a82e" fill-opacity="0.16"/>
+    <rect x="28" y="28" width="544" height="344" rx="16" fill="none" stroke="#8c6d23" stroke-opacity="0.45" stroke-width="1.5"/>
+    <text x="48" y="340" fill="#e6e4dd" font-family="system-ui, sans-serif" font-weight="700" font-size="24" letter-spacing="2">${label}</text>
   </svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
@@ -72,13 +72,13 @@ const FALLBACK_PORTRAIT = (() => {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300">
     <defs>
       <linearGradient id="p" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#3a1e5d"/>
-        <stop offset="100%" stop-color="#1b0e4a"/>
+        <stop offset="0%" stop-color="#1a2124"/>
+        <stop offset="100%" stop-color="#111619"/>
       </linearGradient>
     </defs>
     <rect width="240" height="300" fill="url(#p)"/>
-    <circle cx="120" cy="108" r="42" fill="#a678a2" fill-opacity="0.45"/>
-    <path d="M46 270c8-54 44-82 74-82s66 28 74 82" fill="#7c4a8e" fill-opacity="0.5"/>
+    <circle cx="120" cy="108" r="42" fill="#e0a82e" fill-opacity="0.4"/>
+    <path d="M46 270c8-54 44-82 74-82s66 28 74 82" fill="#3d4a44" fill-opacity="0.6"/>
   </svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 })();

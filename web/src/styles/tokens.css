@@ -1,14 +1,14 @@
 :root {
-  /* Exact 10-colour Hall of Fame palette */
-  --hof-text: #e0c2d5;
-  --hof-text-soft: #d6b2c6;
-  --hof-muted: #c59bb6;
-  --hof-accent-light: #a678a2;
-  --hof-accent: #7c4a8e;
-  --hof-accent-deep: #5b2c6f;
-  --hof-card: #3a1e5d;
-  --hof-surface: #1b0e4a;
-  --hof-bg: #0d0a38;
+  /* 10-colour DARK (Winden) palette: cave abyss, rain-soaked pine, Jonas raincoat amber */
+  --hof-text: #e6e4dd;
+  --hof-text-soft: #c8c6be;
+  --hof-muted: #929994;
+  --hof-accent-light: #e0a82e;
+  --hof-accent: #8c6d23;
+  --hof-accent-deep: #3d4a44;
+  --hof-card: #1a2124;
+  --hof-surface: #111619;
+  --hof-bg: #090c0e;
   --hof-shadow: #000000;
 
   /* Semantic tokens */
@@ -26,11 +26,11 @@
   --border: var(--hof-accent);
   --input: var(--hof-card);
   --ring: var(--hof-accent-light);
-  --danger: #f08ca4;
+  --danger: #e07a7a;
 
-  /* Derived surface overlays using color-mix (no hard-coded new hexes) */
-  --hof-border-subtle: color-mix(in srgb, var(--hof-accent) 45%, transparent);
-  --hof-glass-dark: color-mix(in srgb, var(--hof-shadow) 72%, var(--hof-bg));
+  /* Derived surface overlays using color-mix */
+  --hof-border-subtle: color-mix(in srgb, var(--hof-accent-deep) 70%, transparent);
+  --hof-glass-dark: color-mix(in srgb, var(--hof-shadow) 76%, var(--hof-bg));
   --hof-card-hover: color-mix(in srgb, var(--hof-card) 82%, var(--hof-accent-deep));
-  --hof-danger-bg: color-mix(in srgb, var(--hof-accent-deep) 40%, var(--hof-shadow));
+  --hof-danger-bg: color-mix(in srgb, #6b2424 45%, var(--hof-shadow));
 }

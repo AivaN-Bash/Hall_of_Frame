@@ -54,8 +54,8 @@ public class DevSeedRunner implements ApplicationRunner {
             series.id(),
             "DARK",
             2017,
-            svgArtwork("DARK", "SERIES · 2017", "#0d0a38", "#3a1e5d", "#a678a2", 1),
-            "#a678a2",
+            svgArtwork("DARK", "SERIES · 2017", "#090c0e", "#1a2124", "#e0a82e", 1),
+            "#e0a82e",
             "A puzzle-box family mystery set in a quiet rain-soaked forest town across connected eras.",
             new BigDecimal("9.8"),
             Tier.S,
@@ -212,10 +212,10 @@ public class DevSeedRunner implements ApplicationRunner {
               </defs>
               <rect width="600" height="400" fill="url(#g)"/>
               <circle cx="%d" cy="%d" r="145" fill="%s" fill-opacity="0.22"/>
-              <circle cx="%d" cy="%d" r="110" fill="#e0c2d5" fill-opacity="0.10"/>
+              <circle cx="%d" cy="%d" r="110" fill="#e6e4dd" fill-opacity="0.08"/>
               <rect x="34" y="34" width="532" height="332" rx="18" fill="none" stroke="%s" stroke-opacity="0.45" stroke-width="1.5"/>
               <text x="56" y="84" fill="%s" font-family="ui-monospace, monospace" font-size="14" letter-spacing="3">%s</text>
-              <text x="56" y="316" fill="#e0c2d5" font-family="system-ui, sans-serif" font-weight="700" font-size="38" letter-spacing="1">%s</text>
+              <text x="56" y="316" fill="#e6e4dd" font-family="system-ui, sans-serif" font-weight="700" font-size="38" letter-spacing="1">%s</text>
             </svg>
             """.formatted(bgDark, bgMid, cx1, cy1, accent, cx2, cy2, accent, accent, safeSubtitle, safeTitle);
         String encoded = Base64.getEncoder().encodeToString(svg.getBytes(StandardCharsets.UTF_8));

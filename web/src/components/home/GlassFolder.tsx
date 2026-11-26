@@ -64,24 +64,24 @@ export type GlassFolderProps = {
   style?: React.CSSProperties;
 };
 
-/** Palette-matched marble recipe for Hall of Fame collection folders. */
+/** Palette-matched marble recipe for Hall of Fame collection folders (DARK / Winden theme). */
 export const HOF_FOLDER_ART: ArtRecipe = {
   style: "marble",
   colors: [
     "#000000",
-    "#0d0a38",
-    "#1b0e4a",
-    "#3a1e5d",
-    "#5b2c6f",
-    "#7c4a8e",
-    "#a678a2",
-    "#e0c2d5",
+    "#090c0e",
+    "#111619",
+    "#1a2124",
+    "#3d4a44",
+    "#8c6d23",
+    "#e0a82e",
+    "#e6e4dd",
   ],
   scale: 0.72,
   warp: 3.3,
   angle: -0.5,
   gloss: 0.5,
-  veins: 0.5,
+  veins: 0.55,
 };
 
 // #region art
@@ -1149,12 +1149,12 @@ canvas.gf-sheet-art[data-ready] { opacity: 1; filter: none; }
 .gf-tint {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(27, 14, 74, .22) 0%, rgba(13, 10, 56, .66) 46%, rgba(0, 0, 0, .92) 100%);
+  background: linear-gradient(180deg, rgba(17, 22, 25, .28) 0%, rgba(9, 12, 14, .70) 46%, rgba(0, 0, 0, .93) 100%);
 }
 .gf-spec {
   position: absolute;
   inset: 0;
-  background: radial-gradient(260px 200px at calc(50% + var(--gf-px) * 46%) calc(30% + var(--gf-py) * 40%), rgba(224, 194, 213, .35), rgba(224, 194, 213, 0) 70%);
+  background: radial-gradient(260px 200px at calc(50% + var(--gf-px) * 46%) calc(30% + var(--gf-py) * 40%), rgba(230, 228, 221, .28), rgba(230, 228, 221, 0) 70%);
   mix-blend-mode: screen;
   opacity: .22;
   transition: background-position .6s var(--gf-ease);
@@ -1254,10 +1254,10 @@ canvas.gf-sheet-art[data-ready] { opacity: 1; filter: none; }
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  background: rgba(27, 14, 74, .88);
+  background: rgba(17, 22, 25, .90);
   -webkit-backdrop-filter: blur(24px) saturate(1.6);
   backdrop-filter: blur(24px) saturate(1.6);
-  box-shadow: inset 0 1px 0 rgba(224, 194, 213, .15), 0 0 0 .5px rgba(224, 194, 213, .15), 0 24px 48px -16px rgba(0, 0, 0, .8);
+  box-shadow: inset 0 1px 0 rgba(230, 228, 221, .14), 0 0 0 .5px rgba(230, 228, 221, .14), 0 24px 48px -16px rgba(0, 0, 0, .8);
   transform-origin: 100% 100%;
   opacity: 0;
   visibility: hidden;
