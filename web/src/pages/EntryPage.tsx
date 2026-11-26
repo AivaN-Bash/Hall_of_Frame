@@ -174,11 +174,11 @@ export default function EntryPage() {
           )}
         </div>
 
-        <h1 className="font-display text-4xl uppercase tracking-tight text-[var(--hof-text)] sm:text-5xl">
+        <h1 className="font-display uppercase tracking-tight text-[var(--hof-text)]" style={{ fontSize: 'var(--hof-step-4)', lineHeight: 'var(--hof-leading-tight)' }}>
           {entry.title}
         </h1>
         {entry.tagline && (
-          <p className="text-base italic text-[var(--hof-text-soft)]">{entry.tagline}</p>
+          <p className="italic text-[var(--hof-text-soft)]" style={{ fontSize: 'var(--hof-step-0)', lineHeight: 'var(--hof-leading-body)' }}>{entry.tagline}</p>
         )}
       </header>
 
@@ -186,12 +186,12 @@ export default function EntryPage() {
       <div className="space-y-10">
         <section>
           <h2
-            className="mb-3 text-xs font-bold uppercase tracking-[0.15em]"
+            className="section-label mb-3"
             style={{ color: accent }}
           >
             Why it hooked me
           </h2>
-          <div className="whitespace-pre-line text-sm leading-relaxed text-[var(--hof-text-soft)]">
+          <div className="whitespace-pre-line text-[var(--hof-text-soft)]" style={{ fontSize: 'var(--hof-step-0)', lineHeight: 'var(--hof-leading-relaxed)' }}>
             {entry.whyHooked}
           </div>
         </section>
@@ -207,12 +207,12 @@ export default function EntryPage() {
         {entry.favoriteQuoteOrChar && (
           <section>
             <h2
-              className="mb-3 text-xs font-bold uppercase tracking-[0.15em]"
+              className="section-label mb-3"
               style={{ color: accent }}
             >
               Favorite character or quote
             </h2>
-            <p className="whitespace-pre-line text-sm text-[var(--hof-text-soft)]">
+            <p className="whitespace-pre-line text-[var(--hof-text-soft)]" style={{ fontSize: 'var(--hof-step-0)', lineHeight: 'var(--hof-leading-body)' }}>
               {entry.favoriteQuoteOrChar}
             </p>
           </section>
@@ -236,7 +236,7 @@ export default function EntryPage() {
         {/* Related */}
         {entry.relatedEntries && entry.relatedEntries.length > 0 && (
           <section>
-            <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.15em] text-[var(--hof-muted)]">
+            <h2 className="section-label mb-4 text-[var(--hof-muted)]">
               More like this
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -328,16 +328,17 @@ function SpoilerSection({
   return (
     <section>
       <h2
-        className="mb-3 text-xs font-bold uppercase tracking-[0.15em]"
+        className="section-label mb-3"
         style={{ color: accent }}
       >
         {title} <span className="text-[var(--hof-muted)]">(spoiler)</span>
       </h2>
       <div className="relative">
         <div
-          className={`whitespace-pre-line text-sm text-[var(--hof-text-soft)] transition-[filter] duration-300 ${
+          className={`whitespace-pre-line text-[var(--hof-text-soft)] transition-[filter] duration-300 ${
             revealed ? "" : "select-none blur-md"
           }`}
+          style={{ fontSize: 'var(--hof-step-0)', lineHeight: 'var(--hof-leading-relaxed)' }}
           aria-hidden={!revealed}
         >
           {content}

@@ -28,6 +28,8 @@
     background-color: var(--hof-bg);
     color: var(--hof-text);
     font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+    font-size: var(--hof-step-0);
+    line-height: var(--hof-leading-body);
     scroll-behavior: smooth;
   }
 
@@ -37,6 +39,59 @@
     background-color: var(--hof-bg);
     color: var(--hof-text);
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Typographic hierarchy ─────────────────────────────────── */
+  h1, .h1 {
+    font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+    font-size: var(--hof-step-4);
+    font-weight: 400;
+    line-height: var(--hof-leading-tight);
+    letter-spacing: var(--hof-tracking-tight);
+    text-transform: uppercase;
+  }
+
+  h2, .h2 {
+    font-size: var(--hof-step-2);
+    font-weight: 700;
+    line-height: var(--hof-leading-heading);
+    letter-spacing: var(--hof-tracking-tight);
+  }
+
+  h3, .h3 {
+    font-size: var(--hof-step-1);
+    font-weight: 600;
+    line-height: var(--hof-leading-snug);
+    letter-spacing: var(--hof-tracking-normal);
+  }
+
+  h4, .h4 {
+    font-size: var(--hof-step-0);
+    font-weight: 600;
+    line-height: var(--hof-leading-snug);
+  }
+
+  p, li, blockquote {
+    line-height: var(--hof-leading-body);
+  }
+
+  small, .text-small {
+    font-size: var(--hof-step--1);
+    line-height: var(--hof-leading-body);
+  }
+
+  .text-micro {
+    font-size: var(--hof-step--2);
+    line-height: 1.4;
+  }
+
+  /* Section label — small-caps accent headings */
+  .section-label {
+    font-size: var(--hof-step--2);
+    font-weight: 700;
+    letter-spacing: var(--hof-tracking-widest);
+    text-transform: uppercase;
+    line-height: var(--hof-leading-snug);
   }
 
   *:focus-visible {

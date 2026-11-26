@@ -54,10 +54,10 @@ export default function CollectionsPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <div className="mb-12 flex flex-col items-center gap-4 text-center">
-        <h1 className="font-display text-4xl uppercase tracking-tight text-[var(--hof-text)] sm:text-5xl">
+        <h1 className="font-display uppercase tracking-tight text-[var(--hof-text)]" style={{ fontSize: 'var(--hof-step-4)', lineHeight: 'var(--hof-leading-tight)' }}>
           Collections
         </h1>
-        <p className="text-sm text-[var(--hof-muted)]">
+        <p className="text-[var(--hof-muted)]" style={{ fontSize: 'var(--hof-step--1)', lineHeight: 'var(--hof-leading-body)' }}>
           Click a folder to fan out its highlights, or open the full category.
         </p>
         {isAdmin && (

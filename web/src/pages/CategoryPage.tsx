@@ -120,7 +120,7 @@ export default function CategoryPage() {
           >
             &larr; All Collections
           </Link>
-          <h1 className="mt-2 font-display text-4xl uppercase tracking-tight text-[var(--hof-text)] sm:text-5xl">
+          <h1 className="mt-2 font-display uppercase tracking-tight text-[var(--hof-text)]" style={{ fontSize: 'var(--hof-step-4)', lineHeight: 'var(--hof-leading-tight)' }}>
             {category?.name || slug}
           </h1>
         </div>

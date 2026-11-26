@@ -42,8 +42,8 @@ export default function LoginPage() {
         className="w-full max-w-sm space-y-6 rounded-2xl border border-[var(--hof-border-subtle)] bg-[var(--hof-surface)] p-8"
       >
         <div className="space-y-1 text-center">
-          <h1 className="text-2xl font-bold text-[var(--hof-text)]">Admin Login</h1>
-          <p className="text-sm text-[var(--hof-muted)]">
+          <h1 className="font-bold text-[var(--hof-text)]" style={{ fontSize: 'var(--hof-step-2)', lineHeight: 'var(--hof-leading-heading)' }}>Admin Login</h1>
+          <p className="text-[var(--hof-muted)]" style={{ fontSize: 'var(--hof-step--1)', lineHeight: 'var(--hof-leading-body)' }}>
             Sign in to manage your Hall of Fame.
           </p>
         </div>

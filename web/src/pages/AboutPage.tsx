@@ -21,7 +21,7 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
       <div className="mb-10 flex items-center justify-between gap-4">
-        <h1 className="font-display text-4xl uppercase tracking-tight text-[var(--hof-text)]">
+        <h1 className="font-display uppercase tracking-tight text-[var(--hof-text)]" style={{ fontSize: 'var(--hof-step-4)', lineHeight: 'var(--hof-leading-tight)' }}>
           About
         </h1>
         {isAdmin && (
@@ -38,10 +38,10 @@ export default function AboutPage() {
         )}
       </div>
 
-      <div className="space-y-8 text-sm leading-relaxed text-[var(--hof-text-soft)]">
+      <div className="space-y-8 text-[var(--hof-text-soft)]" style={{ fontSize: 'var(--hof-step-0)', lineHeight: 'var(--hof-leading-relaxed)' }}>
         {site?.aboutBio && (
           <section>
-            <h2 className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[var(--hof-accent-light)]">
+            <h2 className="section-label mb-3 text-[var(--hof-accent-light)]">
               About Me
             </h2>
             <p className="whitespace-pre-line">{site.aboutBio}</p>
@@ -50,7 +50,7 @@ export default function AboutPage() {
 
         {site?.aboutPurpose && (
           <section>
-            <h2 className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[var(--hof-accent-light)]">
+            <h2 className="section-label mb-3 text-[var(--hof-accent-light)]">
               Why This Site
             </h2>
             <p className="whitespace-pre-line">{site.aboutPurpose}</p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
 
         {site?.currentlyWatchingPlaying && (
           <section>
-            <h2 className="mb-3 text-xs font-bold uppercase tracking-[0.15em] text-[var(--hof-accent-light)]">
+            <h2 className="section-label mb-3 text-[var(--hof-accent-light)]">
               Currently
             </h2>
             <p className="whitespace-pre-line">{site.currentlyWatchingPlaying}</p>
