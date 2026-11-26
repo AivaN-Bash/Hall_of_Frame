@@ -207,8 +207,7 @@ export default function HomePage() {
                   />
                   <Link
                     to={`/collections/${cat.slug}`}
-                    className="inline-flex items-center gap-1.5 font-semibold tracking-[0.03em] text-[var(--hof-text-soft)] transition-colors hover:text-[var(--hof-accent-light)]"
-                    style={{ fontSize: "var(--hof-step--1)", lineHeight: "var(--hof-leading-snug)" }}
+                    className="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-base font-semibold tracking-[0.03em] text-[var(--hof-text-soft)] transition-colors hover:text-[var(--hof-accent-light)] sm:text-sm sm:px-2 sm:py-1.5"
                   >
                     Browse {cat.name} &rarr;
                   </Link>
