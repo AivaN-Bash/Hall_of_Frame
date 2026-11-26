@@ -61,6 +61,7 @@ export default function HomePage() {
       src: resolveAssetUrl(e.posterUrl),
       title: e.title,
       href: `/entry/${e.slug}`,
+      accent: e.accentColor || undefined,
     }));
   }, [entries]);
 

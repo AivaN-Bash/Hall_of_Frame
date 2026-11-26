@@ -14,6 +14,8 @@ export type HelixProject = {
   title: string;
   /** Route path (e.g. /entry/dark) for clicking a closing-grid card. */
   href?: string;
+  /** Entry accent colour for caption & RetroGrid highlight. */
+  accent?: string;
 };
 
 export interface HelixRibbonHeroProps {
@@ -171,14 +173,20 @@ const CSS = [
   ".hrh-card:hover .hrh-card-img{border-color:var(--hof-accent-light)}",
   ".hrh-card-img img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}",
   ".hrh-card:hover .hrh-card-img img{transform:scale(1.03)}",
-  ".hrh-cap{display:flex;justify-content:center;text-align:center;padding-top:14px}",
-  ".hrh-cap span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;color:var(--hof-text);transition:color .2s ease}",
-  ".hrh-card:hover .hrh-cap span{color:var(--hof-accent-light)}",
+  ".hrh-cap{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:8px;padding:10px 12px;border-radius:6px;contain:layout paint}",
+  ".hrh-cap-grid{position:absolute;inset:0;pointer-events:none;perspective:140px;overflow:hidden;opacity:.65;transition:opacity .25s ease}",
+  ".hrh-card:hover .hrh-cap-grid{opacity:.95}",
+  ".hrh-cap-plane{position:absolute;inset:0;transform:rotateX(62deg);transform-origin:50% 0%}",
+  ".hrh-cap-lines{position:absolute;left:-50%;top:0;width:200%;height:300%;background-size:26px 26px;background-repeat:repeat;background-image:linear-gradient(to right,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 45%,transparent) 1px,transparent 0),linear-gradient(to bottom,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 45%,transparent) 1px,transparent 0);animation:hrh-grid 12s linear infinite;will-change:transform}",
+  ".hrh-cap-fade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 35%,var(--hof-bg) 95%),linear-gradient(to bottom,var(--hof-bg) 0%,transparent 28%,transparent 72%,var(--hof-bg) 100%)}",
+  ".hrh-cap span{position:relative;z-index:1;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;color:var(--hof-text);text-shadow:0 2px 12px rgba(0,0,0,.85);transition:color .2s ease}",
+  ".hrh-card:hover .hrh-cap span{color:var(--cap-accent,var(--hof-accent-light))}",
+  "@keyframes hrh-grid{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}",
   "@keyframes hrh-rise{from{transform:translateY(60%);filter:blur(12px);opacity:0}60%{opacity:1}to{transform:none;filter:blur(0);opacity:1}}",
   "@keyframes hrh-port{from{clip-path:inset(0 0 100% 0);filter:blur(8px)}to{clip-path:inset(0 0 0 0);filter:blur(0)}}",
   "@keyframes hrh-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}",
   "@media (max-width:719px){.hrh-links{display:none}}",
-  "@media (prefers-reduced-motion:reduce){.hrh-root[data-ready=true] .hrh-ch,.hrh-root[data-ready=true] .hrh-port,.hrh-root[data-ready=true] .hrh-fade{animation:none}.hrh-card-img img{transition:none}}",
+  "@media (prefers-reduced-motion:reduce){.hrh-root[data-ready=true] .hrh-ch,.hrh-root[data-ready=true] .hrh-port,.hrh-root[data-ready=true] .hrh-fade{animation:none}.hrh-cap-lines{animation:none}.hrh-card-img img{transition:none}}",
 ].join("\n");
 
 const px = (v: number) => v.toFixed(2) + "px";
@@ -437,7 +445,7 @@ export default function HelixRibbonHero({
       L.cols = cols;
       L.tw = (W - 2 * g - (cols - 1) * gx) / cols;
       L.th = L.tw / 1.5;
-      const capRow = 42;
+      const capRow = 54;
       const rows = Math.max(1, Math.ceil(tiles.length / cols));
       L.gridH = rows * (L.th + capRow) + (rows - 1) * gy;
       L.top = navH + (mobile ? 12 : g * 0.6);
@@ -737,7 +745,19 @@ export default function HelixRibbonHero({
                     draggable={false}
                   />
                 </div>
-                <div className="hrh-cap" style={{ opacity: 0 }}>
+                <div
+                  className="hrh-cap"
+                  style={{
+                    opacity: 0,
+                    ["--cap-accent" as string]: pr.accent || "var(--hof-accent-light)",
+                  }}
+                >
+                  <div className="hrh-cap-grid" aria-hidden="true">
+                    <div className="hrh-cap-plane">
+                      <div className="hrh-cap-lines" />
+                    </div>
+                    <div className="hrh-cap-fade" />
+                  </div>
                   <span>{pr.title}</span>
                 </div>
               </>
