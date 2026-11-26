@@ -52,6 +52,18 @@ export default function HomePage() {
       const idx = heroOrder.findIndex((key) => slug.toLowerCase().includes(key));
       return idx === -1 ? heroOrder.length : idx;
     };
+    const paletteFor = (slug: string): string | undefined => {
+      const s = slug.toLowerCase();
+      if (s.includes("dark")) return "linear-gradient(135deg, #f5c518 0%, #d94e34 45%, #5a8f94 78%, #f5c518 100%)";
+      if (s.includes("frieren")) return "linear-gradient(135deg, #f0f2f5 0%, #7ec8f8 45%, #e9c46a 78%, #f0f2f5 100%)";
+      if (s.includes("queen")) return "linear-gradient(135deg, #f5ebd6 0%, #e07a38 45%, #2a9d8f 78%, #f5ebd6 100%)";
+      if (s.includes("metaphor")) return "linear-gradient(135deg, #f3c64f 0%, #e63946 45%, #4ea8de 78%, #f3c64f 100%)";
+      if (s.includes("vinland")) return "linear-gradient(135deg, #eab64d 0%, #8ecae6 45%, #52b788 78%, #eab64d 100%)";
+      if (s.includes("catch-me")) return "linear-gradient(135deg, #f26a36 0%, #f5f3f1 45%, #5fa8d3 78%, #f26a36 100%)";
+      if (s.includes("abyss")) return "linear-gradient(135deg, #f4d35e 0%, #38d9a9 45%, #c77dff 78%, #f4d35e 100%)";
+      if (s.includes("persona")) return "linear-gradient(135deg, #ffe119 0%, #ff9f1c 45%, #d8e2dc 78%, #ffe119 100%)";
+      return undefined;
+    };
     const featured = entries.filter((e) => e.featured);
     const nonFeatured = entries.filter((e) => !e.featured);
     const ordered = [...featured, ...nonFeatured]
@@ -62,6 +74,7 @@ export default function HomePage() {
       title: e.title,
       href: `/entry/${e.slug}`,
       accent: e.accentColor || undefined,
+      gradient: paletteFor(e.slug),
     }));
   }, [entries]);
 

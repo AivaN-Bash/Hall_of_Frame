@@ -16,6 +16,8 @@ export type HelixProject = {
   href?: string;
   /** Entry accent colour for caption & RetroGrid highlight. */
   accent?: string;
+  /** Authentic multi-stop CSS gradient based on the show/film/game palette. */
+  gradient?: string;
 };
 
 export interface HelixRibbonHeroProps {
@@ -174,7 +176,7 @@ const CSS = [
   ".hrh-card-img img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}",
   ".hrh-card:hover .hrh-card-img img{transform:scale(1.03)}",
   ".hrh-cap{display:flex;justify-content:center;text-align:center;padding-top:14px}",
-  ".hrh-cap span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;background-image:linear-gradient(135deg,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 45%,#ffffff) 0%,var(--cap-accent,var(--hof-accent-light)) 45%,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 55%,var(--hof-accent-deep)) 75%,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 45%,#ffffff) 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:hrh-shimmer 7s ease-in-out infinite;transition:filter .25s ease}",
+  ".hrh-cap span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Anton,Impact,'Arial Narrow',sans-serif;font-size:clamp(1.05rem,.9rem + .85vw,1.65rem);font-weight:400;letter-spacing:.04em;line-height:1.2;text-transform:uppercase;background-image:var(--cap-grad,linear-gradient(135deg,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 45%,#ffffff) 0%,var(--cap-accent,var(--hof-accent-light)) 45%,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 55%,var(--hof-accent-deep)) 75%,color-mix(in srgb,var(--cap-accent,var(--hof-accent-light)) 45%,#ffffff) 100%));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:hrh-shimmer 7s ease-in-out infinite;transition:filter .25s ease}",
   ".hrh-card:hover .hrh-cap span{filter:brightness(1.18)}",
   "@keyframes hrh-shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}",
   "@keyframes hrh-rise{from{transform:translateY(60%);filter:blur(12px);opacity:0}60%{opacity:1}to{transform:none;filter:blur(0);opacity:1}}",
@@ -745,6 +747,7 @@ export default function HelixRibbonHero({
                   style={{
                     opacity: 0,
                     ["--cap-accent" as string]: pr.accent || "var(--hof-accent-light)",
+                    ...(pr.gradient ? { ["--cap-grad" as string]: pr.gradient } : {}),
                   }}
                 >
                   <span>{pr.title}</span>
