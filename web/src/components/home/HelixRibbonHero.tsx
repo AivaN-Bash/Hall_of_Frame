@@ -706,11 +706,11 @@ export default function HelixRibbonHero({
             <div ref={l2Ref} className="hrh-line" aria-hidden="true">
               <TextGradient
                 as="span"
-                colors={["#e6e4dd", "#e0a82e", "#f5c518", "#929994", "#e0a82e"]}
-                duration={6}
+                colors={["#f7f5ee", "#ffd60a", "#ffb703", "#72efdd", "#f7f5ee"]}
+                duration={14}
                 angle={135}
                 className="hrh-ch"
-                transition={{ duration: 6, ease: "linear", repeat: Number.POSITIVE_INFINITY }}
+                transition={{ duration: 14, ease: "linear", repeat: Number.POSITIVE_INFINITY }}
               >
                 {name}
               </TextGradient>
