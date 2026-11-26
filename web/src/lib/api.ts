@@ -89,6 +89,9 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   }
 
   if (!res.ok) {
+    if (res.status === 401 && token && path !== "/api/auth/login") {
+      setStoredToken(null);
+    }
     if (res.status === 405 && !BASE_URL) {
       throw new ApiError(
         405,
@@ -106,9 +109,15 @@ async function withFallback<T>(fn: () => Promise<T>, fallback: () => T): Promise
   try {
     return await fn();
   } catch (err) {
-    // When deployed on a static host (e.g. Vercel) without VITE_API_BASE_URL set,
-    // /api/* returns HTML or 503; fall back to built-in sample data for public reads.
+    // Fall back to built-in archive data when no API URL is configured, or when an
+    // unauthenticated public read encounters a cold-start / network outage (502+).
     if (!BASE_URL && (err instanceof ApiError || err instanceof TypeError)) {
+      return fallback();
+    }
+    if (
+      !getStoredToken() &&
+      (err instanceof TypeError || (err instanceof ApiError && err.status >= 502))
+    ) {
       return fallback();
     }
     throw err;

@@ -22,6 +22,7 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
 
     private static final int MAX_ATTEMPTS = 5;
     private static final long WINDOW_MS = 60_000L;
+    private static final int MAX_TRACKED_IPS = 1024;
 
     private final ConcurrentHashMap<String, Deque<Long>> attemptsByIp = new ConcurrentHashMap<>();
     private final ObjectMapper objectMapper;
@@ -44,6 +45,9 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
         String key = resolveClientIp(request);
         long now = System.currentTimeMillis();
+        if (attemptsByIp.size() > MAX_TRACKED_IPS) {
+            pruneExpiredEntries(now);
+        }
         Deque<Long> timestamps = attemptsByIp.computeIfAbsent(key, k -> new ArrayDeque<>());
         boolean allowed;
         synchronized (timestamps) {
@@ -73,6 +77,18 @@ public class LoginRateLimitFilter extends OncePerRequestFilter {
 
     public void reset() {
         attemptsByIp.clear();
+    }
+
+    private void pruneExpiredEntries(long now) {
+        attemptsByIp.entrySet().removeIf(entry -> {
+            Deque<Long> q = entry.getValue();
+            synchronized (q) {
+                while (!q.isEmpty() && now - q.peekFirst() > WINDOW_MS) {
+                    q.pollFirst();
+                }
+                return q.isEmpty();
+            }
+        });
     }
 
     private static String resolveClientIp(HttpServletRequest request) {

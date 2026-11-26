@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.halloffame.security.JwtAuthFilter;
 import com.halloffame.security.LoginRateLimitFilter;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -79,7 +80,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource(AppProperties properties) {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of(properties.cors().allowedOrigin()));
+        List<String> origins = Arrays.stream(properties.cors().allowedOrigin().split(","))
+            .map(String::trim)
+            .filter(s -> !s.isEmpty())
+            .toList();
+        config.setAllowedOrigins(origins);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowCredentials(false);
